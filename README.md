@@ -6,7 +6,7 @@ Media Sharing Community Site built on Ruby on Rails. It includes Background Jobs
 
 Requirements
 ------------
-1. Ruby 1.9.3 and above. (http://www.ruby-lang.org/en/)
+1. Ruby 2.0 and above. (http://www.ruby-lang.org/en/)
 2. RubyGems. (http://rubygems.org/)
 3. Rails. (http://rubyonrails.org/) 
 4. Git. (http://lmgtfy.com/?q=how+to+install+git) 
