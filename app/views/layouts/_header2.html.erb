@@ -1,0 +1,90 @@
+<!-- Header Content -->
+<!-- Positioning the Top Bar -->
+<% # http://www.webestools.com/css3-box-shadow-generator-css-property-easy-shadows-div-html5-drop-shadow-moz-webkit-shadow-maker.html %>
+<div class="fixed contain-to-grid"> 
+  <!-- Basic Needs - Navigation -->
+  <nav class="top-bar"> <!-- add expanded to have it always dropped down by default -->
+    <ul class="title-area">
+      <li class="name"><h1><%= link_to raw(APP_HTML_HEADER_NAME), :controller => 'posts' %>
+      <li class="toggle-topbar"><a href="#"></a></li>
+    </ul>
+
+<!--     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li> -->
+
+    <section>
+      <ul class="left">
+        <li><a href="#">What's hot</a></li>
+        <li><a href="#">Trending</a></li>
+        <li><a href="#">Vote</a></li>
+      </ul>
+    </section>
+    
+      <section>
+        <ul>
+          <li class="has-form">
+            <a class="small button" onclick="toggleSlide();">Submit a link</a>                  
+          </li>
+        </ul>
+      
+      <% # if signed in, we'll offer a menu for the user
+        if(user_signed_in?)
+      %>
+            <ul class="right">
+              <li class="has-dropdown">
+                <a class="active" href="#"><%= current_user.username() %></a>
+                <ul class="dropdown">
+                  <li><a href="#">Profile</a></li>
+                  <li><a href="#">Settings</a></li>
+                  <li><a href="#">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+      <% else %>
+            <div href="#" class="radius button dropdown right">
+              Login
+              <ul>
+                <li><a href="#">Facebook user</a></li>
+                <li><a href="#">Google user</a></li>
+                <li><a href="#">Twitter user</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Sign up</a></li>
+              </ul>
+            </div>       
+
+      <% end %>
+      </section>
+
+  </nav>
+
+           <div id="adder" style="width:100%; background-color: #4ba4d5; color: white; display: none; z-index: 30; -moz-box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91); -webkit-box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91); box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91);">
+            <div class="row">
+             <div class="twelve columns">
+              <div class="field">
+              <%= form_for(zpost = Post.new) do |f| %>
+                <% if zpost.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+                    <ul>
+                    <% zpost.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+                 <h2 style="color: white; padding-top: 5px; padding-bottom: 5px;">Sharing is easy:</h2>                
+                  <%= f.text_field :url, :placeholder=> "Type or copy your link here"  %>
+                      <h4 style="color: white">For more customization, try the <%= link_to raw("<strong>advanced</strong> form"), :new_post, :style => "color: yellow" %>.</h4>
+
+              <% end %>
+              </div>   
+            </div>
+          </div>
+        </div>
+
+</div>
+
+  <!-- End Navigation -->
+
+
+

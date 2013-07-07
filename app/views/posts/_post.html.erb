@@ -1,0 +1,71 @@
+   <div class="row">
+      <div class="twelve columns">
+        <% # the post css class will make posts div change color with mouse over %>
+                <div class="row ">           
+        <!-- ID: <%= post.id %> -->
+        <% # If thumbnail url is available %>
+                <div class="eight columns">        
+                <div class="row">
+                    <div class="twelve columns">     
+                            <h2 class="post_title_show"><%= post.query_title(true) %></h2>
+                    </div>
+                    <div class="twelve columns post_domain">        
+                        <strong><%= post.domain.to_s.capitalize %></strong> 
+                        <% if post.domain.to_s.length > 0 %> 
+                            &there4;
+                        <% end %>
+                         <span class="views">
+                            <%= post.views.nil? ? "0" : post.views %> views</span> &there4;                            
+                        <% # The following is commented out as this is always updated %>
+<!--                         <%# if post.updated_at > post.created_at %>
+                                edited <time datetime="<%# post.updated_at %>" update></time> by <strong>Anonymous</strong> 
+                                <%# time_ago_in_words(post.updated_at) %> ago
+                                &there4; 
+                        <%# end %>                                              
+ -->
+                        <%= time_ago_in_words(post.created_at) %> ago by <strong>Anonymous</strong>
+                    </div>
+      
+                    <% if post.description.to_s.length > 0 %>
+                    <% # only show descriptions if a desc is present %>
+                            <div class="twelve columns">   
+                                <% max = 50 %>                                   
+                                    <% # if the description contains any embedded object %>
+                                    <% #if @post.description_html.to_s.include? "<embed" or @post.description_html.to_s.include? "<object" or @post.description_html.to_s.include? "<iframe" %>
+                                          <pre class="description"><%= raw(post.description_html.gsub("<p>", "").gsub("</p>", "").gsub("<br>", "").gsub("<br />", "")) %></pre>
+                                    <% #end %>
+                                <% # <pre class="description"><%= (post.description.length < max ? post.description.gsub("\r\n", "") : "#{post.description[0..max].to_s.gsub("\r\n", "")}...") %><% #</pre>
+                                %>
+                            </div>       
+                    <% end %>                         
+
+                </div>
+
+                <% # Add editor actions if we're in the show action %>
+                  <div class="row">
+                    <div class="twelve columns">
+                        <br/>
+                        <%= link_to 'More', posts_path %> | 
+                        <%= link_to 'Delete', post, confirm: 'This cannot be undone. Are you sure?', method: :delete %> |                        
+                        <%= link_to 'Edit', edit_post_path(post) %>
+
+                    </div>
+                  </div>    
+                         
+         </div>
+
+    <!-- second column -->
+
+                    <div class="four columns post_info" style="float: left;">
+                        <% if false and post.thumbnail_url.to_s.length > 0 and (post.thumbnail_url.strip != post.url.strip) %>
+                            <%=  image_tag post.thumbnail_url, :class => 'thumbnail' %>
+                        <% end %>
+                    </div>
+ 
+     </div>     
+    </div>
+  </div>
+
+  <%= raw "</a></article>" unless controller.action_name == "show" %>
+
+

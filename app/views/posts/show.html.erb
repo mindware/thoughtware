@@ -1,0 +1,142 @@
+<% @title = h(@post.query_title) %>
+
+<% #No longer used - this was used only when storing the html, pre-rendering %>
+<%  if(false and ( !@post.link_directly and @post.get_embed?)) %>
+      <div class="flex-video widescreen">
+        <%#   @post.get_embed  %>
+      </div>
+<% end %>
+
+<br/>
+
+<div class="row">
+  <div class="twelve panel columns roundly">
+    <div class='row'>
+          <div class='twelve columns post_url'> 
+            <% # flex-video widescreen centered %>
+              <% 
+                  # here we will extract the auto_html (auto embedding) 
+                  # content, strip it of paragraph tags and link to it.
+                  # If the content was not embeddable (ie, the string starts with plain http)
+                  # then we just link to the url, which is safely encoded.
+                  # If we got an embed, then we do a proper output of html
+                  output = @post.url_html.to_s
+                  # remove any potential tags added by auto_html
+                  if(output.strip.starts_with? "<p>")                     
+                      output = output.strip.gsub("<p>", "").gsub("</p>", "") 
+                  end
+                  # If we couldn't match the url with a known media/site:
+                  # (the following works for https and http, this ocurrs if auto_html fails to find embed)
+                  if output.starts_with? "http"
+              %>
+                  <h3><%= link_to output, output, :rel => "nofollow", :target => "_blank" %></h3>
+              <%
+                  elsif output.length != ""
+                    # here we contruct the css classes to add to the media
+                    # we don't add zurb foundation flex-video tags for mp3 embeds
+                    css_classes = "flex-video widescreen"   unless @post.url.include? "mp3"
+                    css_classes = css_classes + " youtube"  if output.include? "youtube.com"
+                    css_classes = css_classes + " vimeo"    if output.include? "vimeo.com"
+              %>
+                  <div class="<%= "#{css_classes}" %>">
+                    <%= raw output %>
+                  </div>
+              <%
+                  end
+              %>
+          </div>            
+    </div>
+
+    <div class="row">
+          <div class="twelve columns">
+              <hr />   
+
+                <% #end %>
+                <%= render @post %>
+
+                <hr/>
+                 <!-- Navigation Start -->
+                    <div class="row" style="vertical-align: top; background-color: #EEE;">
+                      <div class="twelve columns">
+                      <nav>
+                        <ul class="block-grid four-up">
+                          <li>
+                            <!-- <div class="six columns navigate-left" style="vertical-align: top; text-align: left;"> -->
+                               <% if obj = @post.previous_post %>
+                               <!-- <div style="display: table-cell"> -->
+                                    <div style="display: inline; vertical-align: bottom; float: left; height:51px; width: 51px;">
+                                        <%= (link_to raw("#{image_tag("icons/previous_arrow.gif", :class => "navigator left")}") , obj) %>
+                                    </div>
+                                <% end %>                        
+                          </li>
+                          <li>
+                               <% if !obj.nil? %>
+
+                                    <div style="vertical-align: middle; display: inline-block; padding-top: 15px; padding-left: 10px; float: left;">
+                                      <strong>Previous Post</strong><%= (obj.title.to_s.length > 0 ? ": #{obj.title}" : ": ##{obj.id}") %>
+                                    </div>
+                               <% end %>
+                          </li>
+                          <li>
+                              <% if obj = @post.next_post %>
+                                    <div style="vertical-align: middle; display: inline-block; padding-top: 15px; padding-right: 10px; float: right; text-align: center; ">
+                                      <strong>Next Post</strong><%= (obj.title.to_s.length > 0 ? ": #{obj.title}" : ": ##{obj.id}")  %>
+                                    </div>
+                              <% end %>
+                          </li>                        
+                          <li>
+                              <% if obj = @post.next_post %>
+                                    <div style="display: inline; vertical-align: top; text-align: center; float: right; height:51px; width: 51px">
+                                        <%= (link_to raw("#{image_tag("icons/next_arrow.gif", :class => "navigator right")}"), obj) %>
+                                    </div>
+                             <% end %>
+                          </li>
+                        </ul>         
+                      </nav>  
+                    </div>          
+                    </div>
+                    <!-- Navigation End -->
+          </div>
+     </div>
+
+  </div>
+</div>
+
+<!-- 
+<div class="row">
+  <div class="twelve columns roundly panel">
+    <div class="row">
+
+      <div class="three mobile-two columns">
+        <img src="http://placehold.it/250x250&text=Thumbnail" />
+        <h6 class="panel">Description</h6>
+      </div>
+
+      <div class="three mobile-two columns">
+        <img src="http://placehold.it/250x250&text=Thumbnail" />
+        <h6 class="panel">Description</h6>
+      </div>
+
+      <div class="three mobile-two columns">
+        <img src="http://placehold.it/250x250&text=Thumbnail" />
+        <h6 class="panel">Description</h6>
+      </div>
+
+      <div class="three mobile-two columns">
+        <img src="http://placehold.it/250x250&text=Thumbnail" />
+        <h6 class="panel">Description</h6>
+      </div>
+
+    </div>
+  </div>
+</div>
+-->
+
+<div class="row">
+ <div class="twelve panel columns roundly comments">
+    <h4 style="color: grey">Comments:</h4>
+    <hr/>
+      <%= link_to 'New Comment'  %>
+ </div>
+</div>
+

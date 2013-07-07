@@ -1,0 +1,150 @@
+
+/* Thoughtware.TV */
+
+ /* Header color definitions */ 
+.orange { color: orange; }
+.cyan   { color: cyan;   }
+.green  { color: green;  }
+.white  { color: white;  }
+
+
+/*   Shared Styles  */
+
+	.post_domain   {   color: grey; margin-top: -5px; margin-bottom: 5px; vertical-align: top; }
+	.post_title {
+					/*font-family: "MuseoSans-500", arial, sans-serif; 		*/
+					font-family: "Roboto", sans-serif, arial; 		
+					white-space: pre-wrap;       /* css-3 */
+					white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+					white-space: -pre-wrap;      /* Opera 4-6 */
+					white-space: -o-pre-wrap;    /* Opera 7 */
+					word-wrap: break-word;       /* Internet Explorer 5.5+ */
+					color: #1888b2; text-decoration: none; line-height: 1.1em; vertical-align: top;
+				}
+
+	.post_title_show { 
+					font-family: "Roboto", arial, sans-serif; color: black;
+					white-space: pre-wrap;       /* css-3 */
+					white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+					white-space: -pre-wrap;      /* Opera 4-6 */
+					white-space: -o-pre-wrap;    /* Opera 7 */
+					word-wrap: break-word;       /* Internet Explorer 5.5+ */
+					text-decoration: none; line-height: 1.1em; vertical-align: top;
+
+	}				
+
+	.post_url {
+
+	}
+
+
+	body { word-wrap: break-word; background: #ded9cc; font-family: "Roboto", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-weight: normal; font-style: normal; line-height: 1; color: #222222; position: relative; -webkit-font-smoothing: antialiased; }
+
+	footer { background-color: #575551; color: white; height: 250px;
+	 }
+
+	footer a { color: #bfbbb0;}
+
+	footer #footer-header { background-color: #ff9a04; height: 10px; margin-bottom: 20px; }
+
+	#footer-menu { 
+	}
+
+	#footer-copy {
+	}
+
+
+
+	/* The box that contains thumbnail, vote and info */
+	.post_info { vertical-align: top; float: right; padding-top: 15px;}
+
+	.thumbnail { border: 5px solid #e9e8e4; padding: 1px; 
+				-moz-border-radius: 10px; border-radius: 10px;
+			   }
+
+	.navigator { border: 5px solid #e9e8e4; padding: 1px; 
+				-moz-border-radius: 10px; border-radius: 10px;  }
+
+	.navigator .left { float: left;  vertical-align: middle;}
+	.navigator .right { float: right; vertical-align: middle;}	
+
+	.navigate-left  { padding-left: -50px; }
+	.navigate-right { padding-right: -550px; float: right;}	
+
+	.roundly { border: 2px solid #b4b0a7; -moz-border-radius: 15px; border-radius: 15px; padding: 15px;}
+
+	#navigation_button { border: 2px solid #b4b0a7; cursor: pointer; text-align: center; -moz-border-radius: 0 0 15px 15px; border-radius: 0 0 15px 15px;}
+	#navigation_button:hover { background-color: #caecfe;}	
+	/*#more_button:hover { background-color: #b1d9ee;}		*/
+	#navigation_button:hover a { color: #0f7db9;}	
+
+	#more_button {
+
+	}
+
+    a.post_block { text-decoration: none; color: black; vertical-align: top;  }  
+    .post_block { border-top: 1px  solid #d3d3d3; }
+	.post_block:hover { background-color: #efefef;}
+
+  
+    .post { }
+	.post:hover { background-color: #eaeaea;}
+
+
+    .gif { background: #EEE; text-decoration: none; color: black; vertical-align: top; }  
+    .gif { border-top: 1px  solid #d4d4d4; }    
+	.gif:hover { background-color: #fff; }
+
+
+	/* an updated flex-video to remove padding */
+	.flex-video { position: relative; padding-top: 0px; padding-bottom: 67.5%; height: 0; margin-bottom: 16px; overflow: hidden; }
+
+	.post_menu {
+	}
+
+	.post_menu .share_menu {
+		/* font-family:"Times New Roman", Times, serif; */
+		padding-top: 0px;
+		opacity:0.4;
+		filter:alpha(opacity=40); /* For IE8 and earlier */	
+	}	
+
+	.post_menu .share_menu:hover {
+		opacity:1.0;
+		filter:alpha(opacity=100);  /* For IE8 and earlier */
+	}
+
+
+	/* Inline Link List */
+	ul.inline-list, ul.link-list { margin: 0 0 17px -22px; padding: 0; list-style: none; overflow: hidden; }
+	ul.inline-list > li, ul.link-list > li { list-style: none; float: left; margin-left: 22px; display: block; }
+	ul.inline-list > li > *, ul.link-list > li > * { display: block; }
+
+	.tw-nav {
+				// background-color: #004;
+	}
+
+	body {-webkit-font-smoothing: antialiased;}@font-face {
+	  font-family: 'Roboto';
+	  font-style: normal;
+	  font-weight: 400;
+	  src: url(//ssl.gstatic.com/fonts/roboto/v8/xZQOmYg4x3YaWkTJi1kErvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+	}
+	@font-face {
+	  font-family: 'Roboto';
+	  font-style: normal;
+	  font-weight: 700;
+	  src: url(//ssl.gstatic.com/fonts/roboto/v8/xypMPkk3qWn0aVtKdo69mQLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+	}
+	@font-face {
+	  font-family: 'Roboto';
+	  font-style: normal;
+	  font-weight: 300;
+	  src: url(//ssl.gstatic.com/fonts/roboto/v8/wdhR8z_EejC7uAMUf1gPYgLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+	}
+
+	.panel li { 
+		display: inline-block;
+	}
+
+

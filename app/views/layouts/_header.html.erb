@@ -1,0 +1,66 @@
+<!-- Header Content -->
+<!-- Positioning the Top Bar -->
+<% # http://www.webestools.com/css3-box-shadow-generator-css-property-easy-shadows-div-html5-drop-shadow-moz-webkit-shadow-maker.html
+ %>
+ <div class="contain-to-grid sticky">
+  <nav class="top-bar tw-nav">
+  <ul class="title-area">
+    <!-- Title Area -->
+    <li class="name">
+      <h1><%= link_to raw(APP_HTML_HEADER_NAME), :controller => 'posts' %></h1>
+    </li>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li class="divider"></li>
+      <li class="active"><%= link_to "What's Hot", :action => "index" %></li>
+      <li class="divider"></li>
+      <li><a href="#">Trending</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Vote</a></li>
+      <li class="divider"></li>      
+    </ul>
+
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="divider show-for-small"></li>
+      <li class="has-form">
+                <a class="button" onclick="toggleSlide();">Submit a link</a>
+      </li>
+    </ul>
+  </section>
+</nav>
+
+
+          <div id="adder" style="width:100%; background-color: #4ba4d5; color: white; display: none; z-index: 30; -moz-box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91); -webkit-box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91); box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91);">
+            <div class="row">
+             <div class="twelve columns">
+              <div class="field">
+              <%= form_for(zpost = Post.new) do |f| %>
+                <% if zpost.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+                    <ul>
+                    <% zpost.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+                 <h2 style="color: white; padding-top: 5px; padding-bottom: 5px;">Sharing is easy:</h2>                
+                  <%= f.text_field :url, :placeholder=> "Type or copy your link here"  %>
+                      <h4 style="color: white">For more customization, try the <%= link_to raw("<strong>advanced</strong> form"), :new_post, :style => "color: yellow" %>.</h4>
+
+              <% end %>
+              </div>   
+            </div>
+          </div>
+        </div>
+</div>
+  <!-- End Navigation -->
+
