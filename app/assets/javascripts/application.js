@@ -89,7 +89,8 @@ function loadImage(url, id) {
 	if (!url || !id) {
 		return false;
 	}
-	if (!images[url]) {
+	if (!images[url]) {		
+		loadingEffect(id);
 		// if image has not been loaded
 		images[url] 		= new Image();
 		// add an onload method for this object for when the src is set and it loads.
@@ -102,19 +103,44 @@ function loadImage(url, id) {
 	}
 }
 
+// Display a visual effect that something is loading for given id
+function loadingEffect(id, undo) {
+		// the undo flag tells us if we're removing the effect
+		// undo will be false by default
+		undo = typeof undo !== 'undefined' ? undo : false
+
+		// we could set an loading animation:
+		//$("#"+id+"").attr('src', "/assets/icons/loading.gif");
+		// or just do a visual effect such as transparency
+		if(!undo)
+			$("#"+id+"").attr('style', "opacity: 0.3");
+		else
+			$("#"+id+"").attr('style', "opacity: 1.0");
+		return false;
+}
+
 function imageLoaded(id, url) {
 		// image has been loaded so:
-		// switch image using jquery		
+		// switch image using jquery				
+		loadingEffect(id, true); // undo the loading visual effect
 		$("#"+id+"").attr('src', ""+images[url].src+"");
 		return false;
 }
 
-function showImage(url, id) {
-		loadImage(url, id);
-		//original	= $("#"+id+"").attr('src');
-		//images[id] 	= [new Image(), $("#"+id+"").attr('src')]
-		//images[id] 	= url 
-		//$("#"+id+"").attr('src', ""+url+"");
+function switchImage(url, replacementUrl, id) {
+		// if the current image src is the url, load the replacement url
+		// we check for url beign a substring of the src, because sometimes
+		// browsers change the path to a fullpath after the second use of this function, ie: 
+		// /assets/icons/img.gif gets changed to http://mydomain.com/assets/icons/img.gif
+		if ($("#"+id+"").attr('src').indexOf(url) != -1) {
+			//alert("loading alternate "+ replacementUrl);
+			loadImage(replacementUrl, id);
+		}
+		else { 
+		// else, switch to the default url
+			//alert("loading default: "+ $("#"+id+"").attr('src') +" != "+ url);
+			loadImage(url, id);		
+		}
 		return false;
 }
 
