@@ -95,8 +95,8 @@
 
 	.roundly { margin-top: 5px; border: 2px solid #b4b0a7; -moz-border-radius: 15px; border-radius: 15px; padding: 0px;}
 
-	#navigation_button { border: 2px solid #b4b0a7; cursor: pointer; text-align: center; -moz-border-radius: 0 0 15px 15px; border-radius: 0 0 15px 15px;}
-	#navigation_button:hover { background-color: #caecfe;}	
+	#navigation_button { background: #fff; border: 2px solid #b4b0a7; cursor: pointer; text-align: center; -moz-border-radius: 0 0 15px 15px; border-radius: 0 0 15px 15px;}
+	#navigation_button:hover { background-color: #d9f2ff;}	
 	/*#more_button:hover { background-color: #b1d9ee;}		*/
 	#navigation_button:hover a { color: #0f7db9;}	
 
@@ -114,10 +114,12 @@
     		-moz-border-radius: 15px; border-radius: 15px;	 
     		background-color: #fff;
      }
+    /* on hover, change the background color of the post box. removed, keeping it simple 
 	.post_block:hover {
-			background-color: #fbfbff;
+			background-color: #fcfdff;
 		 	-moz-border-radius: 15px; border-radius: 15px;	 	 
 	}
+	*/
 
     a.post_block {
     		text-decoration: none; 
@@ -133,8 +135,14 @@
 	}
 
 
-    .gif { background: #EEE; text-decoration: none; color: black; vertical-align: top; }  
-	.gif:hover { background-color: #fff; }
+    .gif { 
+    		background: #fff; 
+    		text-decoration: none;
+    		color: black; 
+    		vertical-align: top; 
+    		border-color: #b6c9e4;
+    	 }  
+	.gif:hover { border-color: #91e5ad; }
 
 
 	/* an updated flex-video to remove padding */
@@ -162,8 +170,11 @@
 	ul.inline-list > li > *, ul.link-list > li > * { display: block; }
 
 	.tw-nav {
-				box-shadow: 1px 1px 5px 2px #d39b09;
+			/* drop shadow on header - cool but distracting, keep it simple */
+			/* 	box-shadow: 1px 1px 5px 2px #d39b09; */
 	}
+
+
 
 	.nav-dropshadow {
 		background: 444;
@@ -194,5 +205,10 @@
 
 	.top-bar {
 		margin-bottom: 2px;
+	}
+
+	.main {
+		margin-top: 10px;
+
 	}
 
