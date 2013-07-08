@@ -75,7 +75,7 @@ $('#more_link').click(function (event) {
   if(!loading_posts) { 
   		loading_posts = true;
   		alert('Hooray!');
-  		 $("#more_button_text").html("<img src='assets/icons/loading.gif'><i>Loading...</i>");  		
+  		 $("#more_button_text").html("<img src='/assets/icons/loading.gif'><i>Loading...</i>");  		
   }
   else {
   		 $("#more_button_text").html("Give Me More");
