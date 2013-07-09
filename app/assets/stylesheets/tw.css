@@ -2,10 +2,14 @@
 /* Thoughtware.TV */
 
  /* Header color definitions */ 
-.orange { color: orange; }
-.cyan   { color: cyan;   }
-.green  { color: green;  }
-.white  { color: white;  }
+ .orange { color: orange; } 
+/*.orange { color: black; } */
+.cyan   { color: cyan;   } 
+/*.cyan   { color: blue;   }*/
+/*.green  { color: darkgreen;  }*/
+.green { color: green; }
+ .white  { color: white;  }
+/*.white  { color: green;  }*/
 
 
 /*   Shared Styles  */
@@ -171,13 +175,22 @@
 
 	.tw-nav {
 			/* drop shadow on header - cool but distracting, keep it simple */
-			/* 	box-shadow: 1px 1px 5px 2px #d39b09; */
+			/*	box-shadow: 1px 1px 5px 2px #d39b09; */
+			box-shadow: 1px 1px 5px 1px #333; 
+			/* background-color: #404040; */
+			opacity: 0.95;
 	}
 
+	ul.top-bar-section, li.top-bar-section, a.top-bar-section{
+		/* background-color: #404040;*/
+	}
 
+	.top-bar {
+		/*background-color: #404040; */
+	}
 
 	.nav-dropshadow {
-		background: 444;
+		/* background: 444; */
 	}
 
 	body {-webkit-font-smoothing: antialiased;}@font-face {
@@ -209,6 +222,12 @@
 
 	.main {
 		margin-top: 10px;
+	}
 
+	#adder {
+	 /* background-color: #4ba4d5; */
+	 /* background-color: #142d3a; */	 
+	  background-color: #234b61;
+	 color: white; display: none; z-index: 30; -moz-box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91); -webkit-box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91); box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91);
 	}
 
