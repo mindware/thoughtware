@@ -46,7 +46,7 @@ DELAYED_JOB_WEB_PASSWORD="Your-Custom-Password-Here" # write the password you wa
 
 * Use bundler to install all dependencies: bundle install
 * Perform all migrations: rake db:migrate
-* Finally, start the server: thin start
+* Finally, start the server: foreman start
 * And visit the app using a web-browser (the port can change depending on your configuration) http://localhost:3000/
 * Access the delayed job interface here: http://localhost:3000/delayed_job/
 
