@@ -14,10 +14,12 @@
 
 /*   Shared Styles  */
 
-	.post_domain   {	color: grey; margin-top: -5px; 
+	.post_domain   {	color: grey; 
+						margin-top: -5px; 
 						margin-bottom: 5px; vertical-align: top; 
-						margin-bottom: 25px;
-						margin-top: 5px;
+						margin-bottom: 20px;
+						margin-left: 5px;
+						margin-top: 15px;
 					}
 
 	.post_title_box {
@@ -79,11 +81,13 @@
 	/* The box that contains thumbnail, vote and info */
 	.post_info { 
 				vertical-align: top; 
-				/* float: right; */
-				/* padding-top: 15px;*/
 				float: left; 
-				padding: 25px;				
-				}
+				padding: 0px;
+	}
+
+	.post_title_box .columns {
+		padding-left: 0px;
+	}
 
 	/* #A9A8A4
 	   #e9e8e4 */
@@ -97,7 +101,10 @@
 	.navigator .left { float: left;  vertical-align: middle;}
 	.navigator .right { float: right; vertical-align: middle;}	
 
-	.roundly { margin-top: 5px; border: 2px solid #b4b0a7; -moz-border-radius: 15px; border-radius: 15px; padding: 0px;}
+	.roundly {
+				margin-top: 5px; border: 1px solid #b4b0a7;
+			   -moz-border-radius: 15px; border-radius: 15px; padding: 0px;
+			 }
 
 	#navigation_button { background: #fff; border: 2px solid #b4b0a7; cursor: pointer; text-align: center; -moz-border-radius: 0 0 15px 15px; border-radius: 0 0 15px 15px;}
 	#navigation_button:hover { background-color: #d9f2ff;}	
@@ -132,7 +139,8 @@
      }  
   
     .post {
-    	padding: 30px;
+    	padding-top: 15px;
+    	padding: 25px;
      }
 	.post:hover { 
 		/* background-color: #eaeaea; */
@@ -176,7 +184,7 @@
 	.tw-nav {
 			/* drop shadow on header - cool but distracting, keep it simple */
 			/*	box-shadow: 1px 1px 5px 2px #d39b09; */
-			box-shadow: 1px 1px 5px 1px #333; 
+			/* box-shadow: 1px 1px 5px 1px #333;  */
 			/* background-color: #404040; */
 			opacity: 0.95;
 	}
@@ -221,7 +229,10 @@
 	}
 
 	.main {
-		margin-top: 10px;
+		/* margin-top: 10px; */
+		margin-top: 0px;
+		background-color: none;
+		border: none;
 	}
 
 	#adder {
@@ -230,4 +241,5 @@
 	  background-color: #234b61;
 	 color: white; display: none; z-index: 30; -moz-box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91); -webkit-box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91); box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91);
 	}
+
 

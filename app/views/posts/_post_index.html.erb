@@ -1,11 +1,11 @@
 <div class="row">
-    <div class="twelve panel columns roundly main" style="">  
+    <div class="large-12 panel columns roundly" style="">  
         <% if @first #or @last %>
         <div class="row post_block" style="border: none;">
         <% else %>
         <div class="row post_block" style="border: none;">
         <% end %>
-            <div class="nine columns">
+            <div class="large-12 columns">
                 <% # i use polymorphic_url instead of link_to so it doesnt generate </a> and to generate the rails 3 version of url_for for the post, which includes the full url (including http), not just path %>
                 <a href="<%= polymorphic_url post %>" class="post_block">
                 <article>
@@ -13,9 +13,9 @@
                     <div class="row post">         
                     <!-- ID: <%= post.id %> -->
                     <% # If thumbnail url is available %>
-                    <div class="twelve columns post_title_box">
+                    <div class="large-12 columns post_title_box">
                         <div class="row">
-                                <div class="twelve columns">     
+                                <div class="large-12 columns">     
                                     <h4 class="post_title"><%= post.query_title %></h4>
                                 </div>
                         </div>                              
@@ -24,7 +24,7 @@
                     <!-- second column -->
 
                     <div class="row">
-                        <div class="twelve columns post_info" >
+                        <div class="large-12 columns post_info" >
                             <% if post.thumbnail_url.to_s.length > 0 %>
                                 <% if post.thumbnail_url[-3..-1] == "gif" %>
                                     <%=  image_animation post, post.thumbnail_url %>
@@ -45,7 +45,7 @@
 
 
                         <div class="row">
-                            <div class="twelve columns post_domain">        
+                            <div class="large-12 columns post_domain">        
                                  <strong><%= post.domain.to_s.capitalize %></strong> 
                                  <% if post.domain.to_s.length > 0 %> 
                                     &there4;
@@ -67,15 +67,15 @@
 
         <% # don't include add this content for now %>
         <% if false %>
-                    <div class="three columns post_menu">
+                    <div class="large-3 columns post_menu">
                         <div class="row">
-                            <div class="twelve columns">
+                            <div class="large-12 columns">
                                 <!-- 
                                     We must customize AddThis with the following:
                                     <div addthis:url="<%# polymorphic_url post %>" addthis_title="<%# post.query_title %>"  
                                 -->
                                     <div class="row">
-                                        <div class="twelve columns share_menu" style="padding-left: 30px;">
+                                        <div class="large-12 columns share_menu" style="padding-left: 30px;">
 
                                                     <!-- AddThis Button BEGIN -->
                                                         <div addthis:url="<%= polymorphic_url post %>" addthis_title="<%= post.query_title %>"  class="addthis_toolbox addthis_default_style addthis_32x32_style">                                    
@@ -99,9 +99,9 @@
             <!--     <div class="three columns post_menu" style="display: none;">
 
                     <div class="row">         
-                        <div class="twelve columns item">
+                        <div class="large-12 columns item">
                             <div class="row">
-                                <div class ="twelve columns">                        
+                                <div class ="large-12 columns">                        
                                     <%= image_tag "icons/globeviews.png", :width => "25px", :height => "25px", :style => "float: left"%>
                                     <span class="post_info">
                                         <% # post.views.nil? ? "0" : post.views %>
@@ -111,9 +111,9 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="twelve columns item last">
+                        <div class="large-12 columns item last">
                             <div class="row">
-                                <div class ="twelve columns">
+                                <div class ="large-12 columns">
                                     <%= image_tag "icons/heart.png", :width => "25px", :height => "25px", :style => "float: middle;"%>
                                     <span class="post_info">
                                         <% # post.views.nil? ? "0" : (post.views / 8 ) + 1 %>

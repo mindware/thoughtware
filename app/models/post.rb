@@ -111,21 +111,25 @@ class Post < ActiveRecord::Base
     # when we use https, which makes delayed_job halt the process (because it blocks rediction)
     if self.url.include? "vimeo.com" and self.url.include? "https://"
         self.url = self.url.gsub("https://", "http://")
-        # Save the changes
-        self.save      
+        # Save the changes  
     end
 
-    # Start processing and queing:    
-    # Jobs that we don't need to delay:
-    get_domain_from_uri           if url.to_s.length > 0 #and self.url_changed? # worth doing it each time in case url was updated. domain is set to nil if no url
+    # Delayed jobs:
+    if url.to_s.length > 0
+          # Start processing and queing:    
+          # Jobs that we don't need to delay:
+          get_domain_from_uri           # worth doing it each time in case url was updated. domain is set to nil if no url
 
-    # Delayed Jobs:
-    delay.request_data_from_url   if url.to_s.length > 0  #and self.url_changed? # Get title and other meta-data from the URL
-    # delay.resetme  unless url.to_s == "" and !title.to_s == "" # Get title and other meta-data from the URL
-    # Old:
-    # get_domain_from_url  # we now do this as a delayed task, as not to slow down the server
-    # generate thumbnail code
-    # generate embed code
+          # Delayed Jobs:
+          delay.get_embed_code           
+          delay.request_data_from_url   # Get title and other meta-data from the URL
+          # delay.resetme  unless url.to_s == "" and !title.to_s == "" # Get title and other meta-data from the URL
+          # Old:
+          # get_domain_from_url  # we now do this as a delayed task, as not to slow down the server
+          # generate thumbnail code
+          # generate embed code
+    end
+    self.save # Save the changes  
 
  end
 
@@ -288,7 +292,7 @@ def request_data_from_url
     #elseif
     else
       #Let's process other file-types
-      if( self.url.end_with? ".jpg" or self.url.end_with ".png" or self.url.end_with? ".gif" )
+      if( self.url.end_with? ".jpg" or self.url.end_with? ".png" or self.url.end_with? ".gif" )
         begin
           # require 'digest/md5'
           # require "open-uri"

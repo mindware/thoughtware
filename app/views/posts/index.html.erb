@@ -1,14 +1,22 @@
+
 <% 
        if(@posts.nil? or @posts.length == 0)
 %>
 <div class="row">
-    <div class="twelve panel columns roundly" style="">  
+    <div class="large-12 panel columns roundly" style="">  
         There are no posts available at this time. Feel free to <%= link_to "add one", new_post_path %>!
     </div>
 </div>        
-<%     else 
+<%  
+      # If we have posts, let's start printing them: 
+      else 
             count = @posts.length # set the counter
             @first = true
+%>
+
+<div class="row">
+    <div class="large-8 columns panel" style="">              
+<%
             # Loop Start
             @posts.each do |post| # start the loop
                 # count -= 1 # count down 
@@ -20,9 +28,19 @@
             <%= render :partial => "post_index", :locals => { :post => post} %>
 <%              @first = false if @first
             end # end of loop
+%>
+    </div>
+    <div class="large-4 columns" style="">              
+        This is an ad
+    </div>
+</div>
+<%
       end # end of empty posts check 
 %>
 
 <% unless @posts.nil? %>
   <%= render "posts/loader" %>
 <% end %>
+
+            </div>
+        </div>
