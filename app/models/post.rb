@@ -129,7 +129,8 @@ class Post < ActiveRecord::Base
           # generate thumbnail code
           # generate embed code
     end
-    self.save # Save the changes  
+
+    self.save # Save changes ocurring during setup (hint, we don't save here delayed job actions)
 
  end
 
