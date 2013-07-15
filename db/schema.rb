@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130318011527) do
+ActiveRecord::Schema.define(:version => 20130715205436) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",     :default => 0
@@ -68,14 +68,15 @@ ActiveRecord::Schema.define(:version => 20130318011527) do
     t.integer  "views"
     t.date     "last_viewed_date"
     t.integer  "link_directly"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "domain"
     t.integer  "cached_votes_total",    :default => 0
     t.integer  "cached_votes_score",    :default => 0
     t.integer  "cached_votes_up",       :default => 0
     t.integer  "cached_votes_down",     :default => 0
     t.integer  "cached_comments_total", :default => 0
+    t.boolean  "is_embeddable",         :default => true
   end
 
   add_index "posts", ["cached_comments_total"], :name => "index_posts_on_cached_comments_total"

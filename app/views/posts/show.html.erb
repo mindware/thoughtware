@@ -10,16 +10,21 @@
                   # If the content was not embeddable (ie, the string starts with plain http)
                   # then we just link to the url, which is safely encoded.
                   # If we got an embed, then we do a proper output of html
-                  output = @post.url_html.to_s
+                  # output = @post.url_html.to_s
                   # remove any potential tags added by auto_html
-                  if(output.strip.starts_with? "<p>")                     
-                      output = output.strip.gsub("<p>", "").gsub("</p>", "") 
-                  end
+                  #if(output.strip.starts_with? "<p>")                     
+                  #    output = output.strip.gsub("<p>", "").gsub("</p>", "") 
+                  #end
+
+                  # we now do all of the above via setup() in a delayed job called
+                  # get_embed_code, which updates self.auto_embed and is_embeddable
+                  output = @post.auto_embed.to_s
                   # If we couldn't match the url with a known media/site:
                   # (the following works for https and http, this ocurrs if auto_html fails to find embed)
-                  if output.starts_with? "http"
+                  #if output.starts_with? "http"
+                  if (!@post.is_embeddable or output.length == 0)
               %>
-                  <h3><%= link_to output, output, :rel => "nofollow", :target => "_blank" %></h3>
+                  <h3><%= link_to @post.url, @post.url, :rel => "nofollow", :target => "_blank" %></h3>
               <%
                   elsif output.length != ""
                     # here we contruct the css classes to add to the media

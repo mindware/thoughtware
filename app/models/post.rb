@@ -121,10 +121,8 @@ class Post < ActiveRecord::Base
           get_domain_from_uri           # worth doing it each time in case url was updated. domain is set to nil if no url
 
           # Delayed Jobs:
-          delay.get_embed_code           
           delay.request_data_from_url   # Get title and other meta-data from the URL
-          # delay.resetme  unless url.to_s == "" and !title.to_s == "" # Get title and other meta-data from the URL
-          # Old:
+          delay.get_embed_code          # Store embed code for later
           # get_domain_from_url  # we now do this as a delayed task, as not to slow down the server
           # generate thumbnail code
           # generate embed code
@@ -134,10 +132,23 @@ class Post < ActiveRecord::Base
 
  end
 
-
-  def resetme 
-    self.title = "reset" 
-  end
+ def get_embed_code
+      # get the html from url_html
+      # url_html if it cant resolve, returns link. We'll filter for it and ignore unembedded
+      self.auto_embed = self.url_html.to_s
+      if self.auto_embed.to_s.length > 0
+          puts "Saving embed code. (#{self.auto_embed}"
+          self.auto_embed = auto_embed.strip.gsub("<p>", "").gsub("</p>", "")
+          if(self.auto_embed.starts_with? "http")
+              self.is_embeddable = false
+          else
+              self.is_embeddable = true
+          end   
+      else
+          self.is_embeddable = false
+      end
+      self.save 
+ end
 
  def previous_post
     self.class.first(:conditions => ["id < ?", id], :order => "id desc")

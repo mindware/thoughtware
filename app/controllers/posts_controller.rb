@@ -120,5 +120,19 @@ class PostsController < ApplicationController
       params[:page] = 1 if params[:page].nil?
       @post = Post.find(:all, :conditions => {:offset => params[:page] * 10, :limit => 10})
   end
+	
+  # For Ajax requests where we just want to see the video data
+  def view
+    @post = Post.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @post }
+      if (@post.views == nil)
+          @post.views = 0
+      end
+          @post.views = @post.views + 1
+      @post.save
+    end
+  end
 
 end
