@@ -6,14 +6,13 @@
 <!--[if (gte IE 9)|!(IE)]><!--> 
 <html lang="en"> <!--<![endif]-->
   <head>
-  	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 
-  	<!-- Uncomment to make IE8 render like IE7 -->
-  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+    <!-- Uncomment to make IE8 render like IE7 -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
 
-  	<!-- Set the viewport width to device width for mobile -->
-  	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
-    <meta name="viewport" content="width=device-width" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
      <% # Our title can be custom set by modifying the @title variable. If missing use default %>
      <title><%= (@title.nil? ? "#{APP_NAME} - #{APP_TITLE}" : "#{h(@title)} - #{APP_NAME}") %></title>
@@ -22,11 +21,14 @@
 	<%= javascript_include_tag "vendor/custom.modernizr" %>
 	<%= csrf_meta_tags %>  
   </head>
-
   <body onload="setup();">
 		<%= render "layouts/header" %>
-		<%= yield %>
-</div>
+    <div class="row">
+      <div class="large-12 columns">
+		    <%= yield -%>
+      </div>
+    </div>  
+
  <!-- Footer --> 
   <footer>          
     <div id="footer-header"></div>                
@@ -58,11 +60,14 @@
           </div>         
       </div>
   </footer>
-
   <!-- Included JS Files  -->
   <%= javascript_include_tag "application" %>
   <script type="application/javascript">
     // $(function() { $("textarea").autoResize();})
-  </script> 
+  </script>
+
+      <div id="myModal" class="reveal-modal medium" >
+      </div>   
+
 </body>
 </html>

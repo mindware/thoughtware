@@ -12,7 +12,7 @@ class CreatePosts < ActiveRecord::Migration
       t.text :manual_embed
       t.integer :comments_count
       t.integer :comments_last_author
-      t.integer :views
+      t.integer :views, :default => 0
       t.date :last_viewed_date
       t.integer :link_directly
 

@@ -143,5 +143,3 @@ function switchImage(url, replacementUrl, id) {
 		}
 		return false;
 }
-
-

@@ -1,10 +1,10 @@
 <div class="row">
   <a href="<%= url_for :action => "more" %>" class="post_block" id="more_link">
 
- <div class="twelve panel columns" id="navigation_button">
+ <div class="large-12 panel columns" id="navigation_button">
    <% # i use polymorphic_url instead of link_to so it doesnt generate </a> and to generate the rails 3 version of url_for for the post, which includes the full url (including http), not just path %>
      <div class="row">
-      <div class="twelve columns">
+      <div class="large-12 columns">
         <h3 id="more_button">
             <% # The id in the following link is used to capture the click and use JS to process
                # the request. In case javascript is disabled, the link will go through to the

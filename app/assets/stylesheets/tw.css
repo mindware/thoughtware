@@ -16,10 +16,11 @@
 
 	.post_domain   {	color: grey; 
 						margin-top: -5px; 
-						margin-bottom: 5px; vertical-align: top; 
+						margin-bottom: 5px; 
+						vertical-align: top; 
 						margin-bottom: 20px;
 						margin-left: 5px;
-						margin-top: 15px;
+						/*margin-top: 15px;*/
 					}
 
 	.post_title_box {
@@ -140,7 +141,8 @@
   
     .post {
     	padding-top: 15px;
-    	padding: 25px;
+    	padding-left: 30px;
+    	padding-right: 30px;
      }
 	.post:hover { 
 		/* background-color: #eaeaea; */
@@ -153,7 +155,7 @@
     		color: black; 
     		vertical-align: top; 
     		border-color: #b6c9e4;
-    	 }  
+     }  
 	.gif:hover { border-color: #91e5ad; }
 
 
@@ -240,6 +242,23 @@
 	 /* background-color: #142d3a; */	 
 	  background-color: #234b61;
 	 color: white; display: none; z-index: 30; -moz-box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91); -webkit-box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91); box-shadow:0px 3px 4px 0px rgba(119, 119, 119, 0.91);
+	}
+
+	.panel {
+		background: none;
+		border: none;
+	}
+
+	.modal,
+	.reveal-modal {
+		border: 1px solid #b4b0a7;
+		-moz-border-radius: 15px; border-radius: 15px;
+	}
+
+	/* modal hack */
+	body, html
+	{
+		height: 100%;
 	}
 
 

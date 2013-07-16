@@ -3,7 +3,7 @@
        if(@posts.nil? or @posts.length == 0)
 %>
 <div class="row">
-    <div class="large-12 panel columns roundly" style="">  
+    <div class="large-12 panel columns roundly centered" style="">  
         There are no posts available at this time. Feel free to <%= link_to "add one", new_post_path %>!
     </div>
 </div>        
@@ -13,8 +13,6 @@
             count = @posts.length # set the counter
             @first = true
 %>
-
-<div class="row">
     <div class="large-8 columns panel" style="">              
 <%
             # Loop Start
@@ -24,6 +22,11 @@
                     # @last = true
                 # end
 %>
+
+          <a href="<%= "#{view_post_path(post.id)}" %>" data-reveal-id="myModal" data-reveal-ajax="true">
+              Click View
+          </a>  
+          
             <% # here we use the general view of posts, to have a consistent design across views %>
             <%= render :partial => "post_index", :locals => { :post => post} %>
 <%              @first = false if @first

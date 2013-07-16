@@ -2,8 +2,10 @@ Tw::Application.routes.draw do
   devise_for :users
 
   resources :posts do
-      collection do  
+      # collection do  
+    member do
           get 'more'
+      	  get 'view'
       end
   end
 

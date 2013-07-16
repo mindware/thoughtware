@@ -205,7 +205,7 @@ GEM
       oauth (~> 0.4.4)
       oauth2 (~> 0.5.2)
       simple_oauth (~> 0.1.5)
-    zurb-foundation (4.0.9)
+    zurb-foundation (4.2.3)
       sass (>= 3.2.0)
 
 PLATFORMS
@@ -231,4 +231,4 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   vimeo
   youtube_it
-  zurb-foundation (~> 4.0.0)
+  zurb-foundation (~> 4.2.0)

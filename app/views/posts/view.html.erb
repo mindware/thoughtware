@@ -1,0 +1,13 @@
+<!-- <h2><%= @post.title %></h2> -->
+<%
+	if(@post.is_embeddable)
+%>
+		<div class="<%= get_css_classes(@post.auto_embed, @post) %>">
+			<%= raw @post.auto_embed %>
+		</div>
+<%
+	else
+%>
+<%=		@post.url		%>
+<% 	end 				%>
+ <a class="close-reveal-modal">&#215;</a>
