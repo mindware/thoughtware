@@ -21,12 +21,7 @@
                 # if count < 1
                     # @last = true
                 # end
-%>
-
-          <a href="<%= "#{view_post_path(post.id)}" %>" data-reveal-id="myModal" data-reveal-ajax="true">
-              Click View
-          </a>  
-          
+%>        
             <% # here we use the general view of posts, to have a consistent design across views %>
             <%= render :partial => "post_index", :locals => { :post => post} %>
 <%              @first = false if @first

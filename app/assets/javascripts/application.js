@@ -143,3 +143,15 @@ function switchImage(url, replacementUrl, id) {
 		}
 		return false;
 }
+
+function openModal(path) {
+	// url with custom callbacks
+	$('#myModal').foundation('reveal', 'open', {
+	    url: ""+ path +"",
+	    success: function(data) {
+	    },
+	    error: function() {
+	        alert('A connection error ocurred. Please try again in a few.');
+	    }
+	});
+}

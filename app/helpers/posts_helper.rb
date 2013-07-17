@@ -6,11 +6,23 @@ module PostsHelper
 		time = Time.now
 		key = rand(100).to_s + time.to_s
 		key = Digest::MD5.hexdigest(key)
-		link_to (image_tag "icons/GIF-play.png", :id => key, 
-				:class => 'thumbnail gif'), post_path(post), 
-				# switchImage params: first image, replacement gif on Click, DOM id 
-				:onclick => "switchImage('/assets/icons/GIF-play.png', '#{thumb}', '#{key}'); return false;"
-		# "hello there"
+		#link_to (image_tag "icons/GIF-play.png", :id => key, 
+		#		:class => 'thumbnail gif'), post_path(post), 
+		#		# switchImage params: first image, replacement gif on Click, DOM id 
+		#		:onclick => "switchImage('/assets/icons/GIF-play.png', '#{thumb}', '#{key}'); return false;"
+		str = %Q{
+		 <div style="padding:50px; font-size: 30pt; font-weight: bold; text-align: center;" class="thumbnail gif centered">
+				 <div>
+				 	GIF
+				 </div>
+        		<div class="large-12 roundly columns gradient centered" style="font-size: 10pt; padding: 10px; text-align: center;">
+            		click to play
+        		</div>
+		</div>
+		}
+
+		return link_to raw(str), post_path(post), :onclick => "openModal('#{view_post_path(post.id)}'); return false;"
+
 	end
 
 	# generate css classes based on the html
