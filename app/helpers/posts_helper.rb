@@ -11,8 +11,7 @@ module PostsHelper
 
         if type.nil? 
         	type = post.url[-3..-1]
-        end
-		#link_to (image_tag "icons/GIF-play.png", :id => key, 
+        end #link_to (image_tag "icons/GIF-play.png", :id => key,
 		#		:class => 'thumbnail gif'), post_path(post), 
 		#		# switchImage params: first image, replacement gif on Click, DOM id 
 		#		:onclick => "switchImage('/assets/icons/GIF-play.png', '#{thumb}', '#{key}'); return false;"
@@ -20,6 +19,7 @@ module PostsHelper
 		 <div class="thumbnail centered gradient gif" style="padding:15px; font-size: 15pt; font-weight: bold; text-align: center;">
 				 <div>
 				 	#{type.upcase}
+				 	hi
 				 </div>   				 
 		</div>
 		}
