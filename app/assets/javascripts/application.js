@@ -144,14 +144,17 @@ function switchImage(url, replacementUrl, id) {
 		return false;
 }
 
-function openModal(path) {
+function openModal(path, fallback_post) {
 	// url with custom callbacks
 	$('#myModal').foundation('reveal', 'open', {
 	    url: ""+ path +"",
 	    success: function(data) {
 	    },
 	    error: function() {
-	        alert('A connection error ocurred. Please try again in a few.');
+	    	// If the ajax fails, we'll simply fall back to redirecting to post's url
+	    	// for a smooth transition for the user.
+			console.log('A connection error ocurred for '+ path+'. Using fallback '+ fallback_post +'.');	    	
+	    	self.location = fallback_post;
 	    }
 	});
 }

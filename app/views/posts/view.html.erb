@@ -1,13 +1,22 @@
 <!-- <h2><%= @post.title %></h2> -->
+ 	<a class="close-reveal-modal round secondary label" style="padding-left: 3px; padding-right: 3px;">&#215;</a>
 <%
 	if(@post.is_embeddable)
 %>
+		<div style="padding-top: 25px; margin-top: 5px;"></div>
 		<div class="<%= get_css_classes(@post.auto_embed, @post) %>">
 			<%= raw @post.auto_embed %>
 		</div>
+	   <div>
+	        <br/>
+	        <%= link_to 'View Comments', post_path %> | 
+	        <%= link_to 'Edit', edit_post_path(@post) %> | 
+	        <%= link_to 'Delete', @post, confirm: 'This cannot be undone. Are you sure?', method: :delete %>	        
+	    </div>
+	  </div> 
+
 <%
 	else
 %>
 <%=		@post.url		%>
 <% 	end 				%>
- <a class="close-reveal-modal">&#215;</a>

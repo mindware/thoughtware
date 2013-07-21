@@ -8,7 +8,7 @@
             <div class="large-12 columns">
                 <% # i use polymorphic_url instead of link_to so it doesnt generate </a> and to generate the rails 3 version of url_for for the post, which includes the full url (including http), not just path %>
                 <% if post.is_embeddable %>                
-                    <a href="<%= polymorphic_url post %>" onclick="openModal('<%= "#{view_post_path(post.id)}" %>'); return false;" class="post_block">
+                    <a href="<%= polymorphic_url post %>" onclick="openModal(<%= "'#{view_post_path(post.id)}', '#{polymorphic_url post}'" %>); return false;" class="post_block">
                 <% else %>
         <!-- data-reveal-id="myModal" data-reveal-ajax="true" -->
           <!-- </a> -->

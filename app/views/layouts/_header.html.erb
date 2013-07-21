@@ -4,38 +4,36 @@
  %>
  <div class="contain-to-grid sticky tw-nav">
   <nav class="top-bar">
-  <ul class="title-area">
-    <!-- Title Area -->
-    <li class="name">
-      <h1><%= link_to raw(APP_HTML_HEADER_NAME), :controller => 'posts' %></h1>
-    </li>
-    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-  </ul>
-
-  <section class="top-bar-section">
-    <!-- Left Nav Section -->
-    <ul class="left">
-      <li class="divider"></li>
-      <li class="active"><%= link_to "What's Hot", :action => "index" %></li>
-      <li class="divider"></li>
-      <li><a href="#">Trending</a></li>
-      <li class="divider"></li>
-      <li><a href="#">Brand new</a></li>
-      <li class="divider"></li>      
-    </ul>
-
-    <!-- Right Nav Section -->
-    <ul class="right">
-      <li class="divider show-for-small"></li>
-      <li class="has-form">
-                <a class="button" onclick="toggleSlide();">Submit a link</a>
+    <ul class="title-area">
+      <!-- Title Area -->
+      <li class="name">
+        <h1><%= link_to raw(APP_HTML_HEADER_NAME), :controller => 'posts' %></h1>
       </li>
+      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
-  </section>
+
+    <section class="top-bar-section">
+      <!-- Left Nav Section -->
+      <ul class="left">
+        <li class="divider"></li>
+        <li class="active"><%= link_to "What's Hot", :action => "index" %></li>
+        <li class="divider"></li>
+        <li><a href="#">Trending</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Brand new</a></li>
+        <li class="divider"></li>      
+      </ul>
+
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li class="divider show-for-small"></li>
+        <li class="has-form">
+                  <a class="button" onclick="toggleSlide();">Submit a link</a>
+        </li>
+      </ul>
+    </section>
 </nav>
-
-
           <div id="adder">
             <div class="row">
              <div class="twelve columns">
@@ -53,7 +51,7 @@
                   </div>
                 <% end %>
                  <h2 style="color: white; padding-top: 5px; padding-bottom: 5px;">Sharing is easy:</h2>                
-                  <%= f.text_field :url, :placeholder=> "Type or copy your link here"  %>
+                  <%= f.text_field :url, :placeholder=> "Type or copy your link here", :required => true %>
                       <h4 style="color: white">For more customization, try the <%= link_to raw("<strong>advanced</strong> form"), :new_post, :style => "color: yellow" %>.</h4>
 
               <% end %>
@@ -61,5 +59,13 @@
             </div>
           </div>
         </div>
+
+    <!--  Floating Ads          
+    <div class="large-3 hide-for-small" style="padding: 0px; top: 65px; background-color: transparent!important; position: fixed; right: 60px; z-index: 2;">
+        <%= image_tag "ads/post_via_email2.png", :class => "roundly" %>
+    </div>
+  -->
+
+
 </div>
   <!-- End Navigation -->

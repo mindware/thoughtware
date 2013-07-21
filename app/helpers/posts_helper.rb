@@ -4,20 +4,23 @@ module PostsHelper
 
 	def image_animation (post, thumb)
 		time = Time.now
-		key = rand(100).to_s + time.to_s
-		key = Digest::MD5.hexdigest(key)
+		key  = rand(100).to_s + time.to_s
+		key  = Digest::MD5.hexdigest(key)
+
+        type = post.thumbnail_url[-3..-1]
+
+        if type.nil? 
+        	type = post.url[-3..-1]
+        end
 		#link_to (image_tag "icons/GIF-play.png", :id => key, 
 		#		:class => 'thumbnail gif'), post_path(post), 
 		#		# switchImage params: first image, replacement gif on Click, DOM id 
 		#		:onclick => "switchImage('/assets/icons/GIF-play.png', '#{thumb}', '#{key}'); return false;"
 		str = %Q{
-		 <div style="padding:50px; font-size: 30pt; font-weight: bold; text-align: center;" class="thumbnail gif centered">
+		 <div class="thumbnail centered gradient gif" style="padding:15px; font-size: 15pt; font-weight: bold; text-align: center;">
 				 <div>
-				 	GIF
-				 </div>
-        		<div class="large-12 roundly columns gradient centered" style="font-size: 10pt; padding: 10px; text-align: center;">
-            		click to play
-        		</div>
+				 	#{type.upcase}
+				 </div>   				 
 		</div>
 		}
 
