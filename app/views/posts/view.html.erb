@@ -5,7 +5,25 @@
 %>
 		<div style="padding-top: 25px; margin-top: 5px;"></div>
 		<div class="<%= get_css_classes(@post.auto_embed, @post) %>">
-			<%= raw @post.auto_embed %>
+			<% 
+				# if (@post.url.length > 3) 
+					# if this is an image, don't use auto embed, use our loading js library
+					# if (@post.url[-4..-1] == ".jpg" or @post.url[-4..-1] == ".gif" or @post.url[-4..-1] == ".png" or @post.url[-5..-1] == ".jpeg") 
+			#
+			# 			<img id="image_<%= @post.id %>" src="">
+			# 					<script type="text/javascript">
+			# 						// load the image
+			# 						// loadImage("<% = @post.url % >", "image_<% = @post.id % >");
+			# 						alert('we should the image here');
+			# 					</script>						
+			# 
+					# else
+			%>
+						<%= raw @post.auto_embed %>
+			<%
+					# end
+			   #end 
+			%>
 		</div>
 	   <div>
 	        <br/>

@@ -19,7 +19,6 @@ module PostsHelper
 		 <div class="thumbnail centered gradient gif" style="padding:15px; font-size: 15pt; font-weight: bold; text-align: center;">
 				 <div>
 				 	#{type.upcase}
-				 	hi
 				 </div>   				 
 		</div>
 		}

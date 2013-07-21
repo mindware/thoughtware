@@ -152,7 +152,7 @@ function openModal(path, fallback_post) {
 	    },
 	    error: function() {
 	    	// If the ajax fails, we'll simply fall back to redirecting to post's url
-	    	// for a smooth transition for the user.
+	    	// for a smooth transition for the user.	
 			console.log('A connection error ocurred for '+ path+'. Using fallback '+ fallback_post +'.');	    	
 	    	self.location = fallback_post;
 	    }
