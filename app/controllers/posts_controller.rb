@@ -19,18 +19,27 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   # GET /posts/1.json
+  # REDIR /posts/1?r=1
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:id]) 
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @post }
-      if (@post.views == nil)
-          @post.views = 0
-      end
-          @post.views = @post.views + 1
-      @post.save
+    # update the views
+    if (@post.views == nil)
+        @post.views = 0
     end
+    @post.views = @post.views + 1
+    @post.save    
+
+    # Updated to check for parameter r=1 which stands for a redirect request
+    if(params[:r] == "1")    
+        redirect_to @post.url      
+    else 
+    # we do normal rendering        
+        respond_to do |format|
+            format.html # show.html.erb
+            format.json { render json: @post }
+        end
+    end 
   end
 
   # GET /posts/new
@@ -122,18 +131,21 @@ class PostsController < ApplicationController
   end
 	
   # For Ajax requests where we just want to see the video data
+  # or redirect
   def view
     @post = Post.find(params[:id])
+    # respond by format
     respond_to do |format|
-      format.html { render :layout => false } # show.html.erb
-      format.json { render json: @post }
-      if (@post.views == nil)
-          @post.views = 0
-      end
-          @post.views = @post.views + 1
-          @post.save
+          format.html { render :layout => false } # show.html.erb
+          format.json { render json: @post }
     end
-
+    # update views
+    if (@post.views == nil)
+        @post.views = 0
+    else
+        @post.views = @post.views + 1
+        @post.save
+    end      
   end
 
 end

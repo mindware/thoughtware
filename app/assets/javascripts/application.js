@@ -94,12 +94,12 @@ function loadImage(url, id) {
 		// if image has not been loaded
 		images[url] 		= new Image();
 		// add an onload method for this object for when the src is set and it loads.
-		images[url].onload 	= function() { imageLoaded(id, url); }
+		images[url].onload 	= function() { imageLoaded(url, id); }
 		// add the src so that the image loads
 		images[url].src		= url;
 	} else {
 		// image is already loaded
-		imageLoaded(id, url);
+		imageLoaded(url, id);
 	}
 }
 
@@ -119,7 +119,7 @@ function loadingEffect(id, undo) {
 		return false;
 }
 
-function imageLoaded(id, url) {
+function imageLoaded(url, id) {
 		// image has been loaded so:
 		// switch image using jquery				
 		loadingEffect(id, true); // undo the loading visual effect
@@ -157,4 +157,12 @@ function openModal(path, fallback_post) {
 	    	self.location = fallback_post;
 	    }
 	});
+}
+
+// Change URL on mouse down for posts of class id
+function changeURL(url, id) {
+	$("."+ id +"").attr("href", ""+ url+"");
+	$("."+ id +"").remoteAttr("onmousedown");
+	alert("Changed the url href to "+  $("."+ id +"").attr('href') +"");
+	return false;
 }

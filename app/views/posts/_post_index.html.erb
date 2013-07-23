@@ -7,12 +7,17 @@
         <% end %>
             <div class="large-12 columns">
                 <% # i use polymorphic_url instead of link_to so it doesnt generate </a> and to generate the rails 3 version of url_for for the post, which includes the full url (including http), not just path %>
-                <% if post.is_embeddable %>                
+                <% if post.is_embeddable == true %>                
                     <a href="<%= polymorphic_url post %>" onclick="openModal(<%= "'#{view_post_path(post.id)}', '#{polymorphic_url post}'" %>); return false;" class="post_block">
                 <% else %>
-        <!-- data-reveal-id="myModal" data-reveal-ajax="true" -->
-          <!-- </a> -->
-                    <a href="<%= polymorphic_url post %>" class="post_block">
+                    <% if post.url.to_s.length > 0 %>   
+                        <!-- we change url, count the view, and redirect to the actual url -->
+                        <!-- we use classes instead of ids due to browser behaviours on block links -->
+                        <a href="<%= polymorphic_url post %>" class="post_block post_<%= post.id %>" onmousedown="changeURL('<%= "#{post_path(post.id)}?r=1" %>', 'post_<%= post.id %>'); return false;" target="_blank">
+                    <% else %>
+                        <!-- Quotes, IAMAs and thought/blog posts - we link to post -->
+                        <a href="<%= polymorphic_url post %>" class="post_block">
+                    <% end %>
                 <% end %>
                 <article>
                 <% # the post css class will make posts div change color with mouse over %>

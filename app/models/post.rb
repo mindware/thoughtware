@@ -64,14 +64,19 @@ class Post < ActiveRecord::Base
   # end  
 
   # Get the embed code from a post
+  # we output in order of importance: manual, thumbnail, auto embed  
   def get_embed
-  		return self.manual_embed if self.manual_embed.length > 0
-  		return self.thumbnail_code if self.thumbnail_code.length > 0
+  		return self.manual_embed if self.manual_embed.to_s.length > 0
+  		return self.thumbnail_code if self.thumbnail_code.to_s.length > 0
+      return self.auto_embed if self.auto_embed.to_s.length > 0          
   		return false
   end
 
   # Check if we can get an embed code for this url
   # returns true | false
+  # ie: false | "hi" 
+  # returns true  
+  # reminder: because we're using |, this method will return either true or false, no strings.
   def get_embed?
   		return false | self.get_embed
   end  
