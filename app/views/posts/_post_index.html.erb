@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="large-12 panel columns roundly" style="">  
+    <div class="large-12 panel columns roundly">  
         <% if @first #or @last %>
         <div class="row post_block" style="border: none;">
         <% else %>
@@ -7,21 +7,22 @@
         <% end %>
             <div class="large-12 columns">
                 <% # i use polymorphic_url instead of link_to so it doesnt generate </a> and to generate the rails 3 version of url_for for the post, which includes the full url (including http), not just path %>
+                <article>           
+                <div class="row post">               
                 <% if post.is_embeddable == true %>                
-                    <a href="<%= polymorphic_url post %>" onclick="openModal(<%= "'#{view_post_path(post.id)}', '#{polymorphic_url post}'" %>); return false;" class="post_block">
+                    <a href="<%= polymorphic_url post %>" onclick="openModal(<%= "'#{view_post_path(post.id)}', '#{polymorphic_url post}'" %>); return false;" class="post_link">
                 <% else %>
                     <% if post.url.to_s.length > 0 %>   
                         <!-- we change url, count the view, and redirect to the actual url -->
                         <!-- we use classes instead of ids due to browser behaviours on block links -->
-                        <a href="<%= polymorphic_url post %>" class="post_block post_<%= post.id %>" onmousedown="changeURL('<%= "#{post_path(post.id)}?r=1" %>', 'post_<%= post.id %>'); return false;" target="_blank">
+                        <a href="<%= polymorphic_url post %>" class="post_link post_<%= post.id %>" onmousedown="changeURL('<%= "#{post_path(post.id)}?r=1" %>', 'post_<%= post.id %>'); return false;" target="_blank">
                     <% else %>
                         <!-- Quotes, IAMAs and thought/blog posts - we link to post -->
-                        <a href="<%= polymorphic_url post %>" class="post_block">
+                        <a href="<%= polymorphic_url post %>" class="post_link">
                     <% end %>
                 <% end %>
-                <article>
                 <% # the post css class will make posts div change color with mouse over %>
-                    <div class="row post">         
+
                     <!-- ID: <%= post.id %> -->
                     <% # If thumbnail url is available %>
                     <div class="large-12 columns post_title_box">
@@ -52,7 +53,7 @@
                         </div>
                     </div>                                                
 
-                <%= raw "</a></article>" %>
+                <%= raw "</a></div></article>" %>
 
                         <div class="row">
                             <div class="large-12 columns post_domain">        
@@ -68,7 +69,27 @@
                                 <% #end %>
                                 <time datetime="<%= post.created_at %>" pubdate></time><%= time_ago_in_words(post.created_at) %> ago by <strong><%= post.user_id %></strong>
                                 </time>
-                                <strong>Anonymous</strong>                        
+                                <strong>Anonymous</strong>  
+                            </div>                            
+                            <div class="large-12 columns comment_box" style="background-color: #EEE; padding-top: 15px;">
+                                <div class="row">
+                                    <div class="large-2 columns">
+                                        <div class="row">                                  
+                                            <div class="large-5 columns roundly" style="text-align: center;">
+                                                +1
+                                            </div>
+                                            <div class="large-5 columns roundly" style="text-align: center;">
+                                                Share                                                
+                                            </div>                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="large-10 columns">
+                                        <%= form_for(Post.new) do |f| %>
+                                                <%= f.text_field :title, :placeholder=> "Add Comment", :required => true %>
+                                        <% end %>        
+                                    </div>       
+                                </div>                                
                             </div>
                         </div>
 
@@ -78,7 +99,7 @@
 
         <% # don't include add this content for now %>
         <% if false %>
-                    <div class="large-3 columns post_menu">
+                    <div class="large-3 columns panel post_menu">
                         <div class="row">
                             <div class="large-12 columns">
                                 <!-- 
@@ -106,35 +127,7 @@
                         </div>
                     </div>
 
-        <% end %>
-            <!--     <div class="three columns post_menu" style="display: none;">
-
-                    <div class="row">         
-                        <div class="large-12 columns item">
-                            <div class="row">
-                                <div class ="large-12 columns">                        
-                                    <%= image_tag "icons/globeviews.png", :width => "25px", :height => "25px", :style => "float: left"%>
-                                    <span class="post_info">
-                                        <% # post.views.nil? ? "0" : post.views %>
-                                    </span>
-                                </div>                                    
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="large-12 columns item last">
-                            <div class="row">
-                                <div class ="large-12 columns">
-                                    <%= image_tag "icons/heart.png", :width => "25px", :height => "25px", :style => "float: middle;"%>
-                                    <span class="post_info">
-                                        <% # post.views.nil? ? "0" : (post.views / 8 ) + 1 %>
-                                    </span>                        
-                                </div>                                    
-                            </div>
-                        </div>
-                    </div>
-             
-                </div>     -->   
+        <% end %>    
         </div>
 </div>
 </div>

@@ -104,7 +104,7 @@
 
 	.roundly {
 				margin-top: 5px; border: 1px solid #b4b0a7;
-			   -moz-border-radius: 15px; border-radius: 15px; padding: 0px;
+			   -moz-border-radius: 15px; border-radius: 15px; padding: 5px;
 			 }
 
 	#navigation_button { background: #fff; border: 2px solid #b4b0a7; cursor: pointer; text-align: center; -moz-border-radius: 0 0 15px 15px; border-radius: 0 0 15px 15px;}
@@ -116,16 +116,15 @@
 
 	}
 
-	.post_block { 
-				/* padding-top: 15px;  */
-				/*padding: 25px;*/
-	}
-
     .post_block { 
     		border-top: 1px solid #d3d3d3; 
     		-moz-border-radius: 15px; border-radius: 15px;	 
     		background-color: #fff;
      }
+/*
+    a.post_link:visited {   
+    	background-color: red;
+    }*/
     /* on hover, change the background color of the post box. removed, keeping it simple 
 	.post_block:hover {
 			background-color: #fcfdff;
@@ -307,4 +306,8 @@
 
 	.close-reveal-modal {
 		padding: 0px;
+	}
+
+	.comment_box {
+		-moz-border-radius: 0 0 15px 15px; border-radius: 0 0 15px 15px;
 	}
