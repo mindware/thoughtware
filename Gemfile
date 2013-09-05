@@ -42,3 +42,6 @@ gem 'foreman'		# To start up app requirements
 gem "delayed_job_active_record" # https://github.com/collectiveidea/delayed_job
 gem 'delayed_job_web'		# https://github.com/ejschmitt/delayed_job_web
 
+# Mail app
+gem 'mini-smtp-server'
+
